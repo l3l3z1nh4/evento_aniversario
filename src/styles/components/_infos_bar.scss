@@ -1,0 +1,26 @@
+@use '../variables';
+
+.infos-bar {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+
+    @media (max-width: 640px) {
+        
+
+        &__infos {
+            display: block;
+
+            
+        }
+    }
+
+    @media (max-width: 1024px) {
+        &__infos {
+            gap: 16px;
+        }
+    }
+}

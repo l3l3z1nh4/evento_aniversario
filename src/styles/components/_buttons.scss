@@ -1,0 +1,29 @@
+@use '../variables';
+
+.button {
+    display: block;
+    margin-top: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid transparent;
+    color: variables.$color1; 
+    font-family: "Kapakana", serif ;
+    
+    &:hover{
+        
+        border: 1px solid variables.$color1;
+        border-radius: 20px;
+    }
+
+    @media (max-width: 640px) {
+        display: block;
+        width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+        display: flex;
+        align-items: center;
+    }
+}
