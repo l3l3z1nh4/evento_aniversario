@@ -1,27 +1,34 @@
 AOS.init();
 
-const dataDoEvento = new Date("Jan 02, 2026 08:00:00");
-const timeStampDoEvento = dataDoEvento.getTime();
+const agora = new Date()
+const anoAtual = agora.getFullYear()
+let dataDoEvento = new Date(anoAtual, 0, 2, 8, 0, 0) // 2 de janeiro, 8h
 
-const contaAsHoras = setInterval(function() {
-    const agora = new Date();
-    const timeStampAtual = agora.getTime();
+if (agora > dataDoEvento) {
+  dataDoEvento = new Date(anoAtual + 1, 0, 2, 8, 0, 0)
+}
 
-    const distanciaAteOEvento = timeStampDoEvento - timeStampAtual;
+const timeStampDoEvento = dataDoEvento.getTime()
 
-    const diaEmMs = 1000 * 60 * 60 * 24;
-    const horaEmMs = 1000 * 60 * 60;
-    const minutoEmMs = 1000 * 60;
+const contaAsHoras = setInterval(function () {
+  const agora = new Date()
+  const timeStampAtual = agora.getTime()
 
-    const diasAteOEvento = Math.floor(distanciaAteOEvento / diaEmMs);
-    const horasAteOEvento = Math.floor((distanciaAteOEvento % diaEmMs) / horaEmMs);
-    const minutosAteOEvento = Math.floor((distanciaAteOEvento % horaEmMs) / minutoEmMs);
-    const segundosAteOEvento = Math.floor((distanciaAteOEvento % minutoEmMs) / 1000);
+  const distanciaAteOEvento = timeStampDoEvento - timeStampAtual
 
-    document.getElementById('contador').innerHTML = `${diasAteOEvento}d ${horasAteOEvento}h ${minutosAteOEvento}m ${segundosAteOEvento}s`;
+  const diaEmMs = 1000 * 60 * 60 * 24
+  const horaEmMs = 1000 * 60 * 60
+  const minutoEmMs = 1000 * 60
 
-    if (distanciaAteOEvento < 0) {
-        clearInterval(contaAsHoras);
-        document.getElementById('contador').innerHTML = 'Ops, parece que esse evento ja acabou.';
-    }
-}, 1000);
+  const diasAteOEvento = Math.floor(distanciaAteOEvento / diaEmMs)
+  const horasAteOEvento = Math.floor((distanciaAteOEvento % diaEmMs) / horaEmMs)
+  const minutosAteOEvento = Math.floor((distanciaAteOEvento % horaEmMs) / minutoEmMs)
+  const segundosAteOEvento = Math.floor((distanciaAteOEvento % minutoEmMs) / 1000)
+
+  document.getElementById('contador').innerHTML = `${diasAteOEvento}d ${horasAteOEvento}h ${minutosAteOEvento}m ${segundosAteOEvento}s`
+
+  if (distanciaAteOEvento < 0) {
+    clearInterval(contaAsHoras)
+    document.getElementById('contador').innerHTML = 'Ops, parece que esse evento já acabou.'
+  }
+}, 1000)
