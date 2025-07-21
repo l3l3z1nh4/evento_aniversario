@@ -2,8 +2,7 @@ AOS.init();
 
 const agora = new Date()
 const anoAtual = agora.getFullYear()
-let dataDoEvento = new Date(anoAtual, 0, 2, 8, 0, 0) // 2 de janeiro, 8h
-
+let dataDoEvento = new Date(anoAtual, 0, 2, 8, 0, 0) 
 if (agora > dataDoEvento) {
   dataDoEvento = new Date(anoAtual + 1, 0, 2, 8, 0, 0)
 }
